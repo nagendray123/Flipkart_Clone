@@ -37,7 +37,6 @@ android {
     }
 
     buildFeatures{
-        dataBinding = true
         viewBinding = true
     }
 }
@@ -57,23 +56,37 @@ dependencies {
     // Navigation
 
     val navVersion = "2.7.6"
+    //noinspection GradleDependency
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    //noinspection GradleDependency
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.6")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.7")
 
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
-    implementation ("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 
     val lifecycleVersion = "2.7.0"
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt ("android.arch.lifecycle:compiler:1.1.1")
 
     //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // Fragment
     implementation ("androidx.fragment:fragment-ktx:1.6.2")
+
+    // retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    // GSON
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // This dependency is use to url to image covert purpose
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
 }
+

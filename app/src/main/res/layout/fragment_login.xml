@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
     <EditText
-        android:id="@+id/textName"
+        android:id="@+id/loginName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/your_name"
@@ -32,13 +32,13 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/textPassword"
+        android:id="@+id/loginPassword"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textName"
+        app:layout_constraintTop_toBottomOf="@+id/loginName"
         android:layout_marginTop="16dp"
         android:textSize="20sp"
         android:autofillHints="no"
@@ -54,10 +54,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 
     <TextView
-        android:id="@+id/registerText"
+        android:id="@+id/registerRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

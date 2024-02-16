@@ -19,12 +19,10 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel(){
         }
     }
 
+
     fun loginUser(username: String, password: String){
         viewModelScope.launch {
             _loggedInUser.value = userRepository.loginUser(username, password)
         }
     }
-
-
-
 }

@@ -6,12 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.project.model.User
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
-
         @Volatile
         private var INSTANCE: UserDatabase? = null
 
@@ -27,5 +26,4 @@ abstract class UserDatabase : RoomDatabase() {
             }
         }
     }
-
 }

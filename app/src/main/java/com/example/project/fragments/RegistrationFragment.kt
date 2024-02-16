@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.project.R
@@ -22,7 +21,6 @@ class RegistrationFragment : Fragment() {
     private val viewModel: UserViewModel by viewModels {
         UserModelFactory(UserRepository(UserDatabase.getDatabase(requireContext()). userDao()))
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,24 +35,26 @@ class RegistrationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
             // set Up UI element
-            binding.registerButton.setOnClickListener {
-                val username = binding.textName.text.toString()
-                val password = binding.textPassword.text.toString()
+        binding.registerButton.setOnClickListener {
+                val username = binding.registerUsername.text.toString()
+                val password = binding.registerPassword.text.toString()
 
-                // Perform registration
-                 viewModel.registerUser(username, password)
-                // Observe the registration result
-                  viewModel.loggedInUser.observe(viewLifecycleOwner) { user ->
-                      if (user != null) {
-                          findNavController().navigate(R.id.action_registrationFragment_to_productFragment)
-                      } else {
-                          Toast.makeText(
-                              requireContext(),
-                              "your registration is failed",
-                              Toast.LENGTH_SHORT
-                          ).show()
-                      }
-                  }
+            if(isInputValid(username, password)){
+                    // Perform registration
+                    viewModel.registerUser(username, password)
+                    findNavController().navigate(R.id.action_registrationFragment_to_productFragment)
             }
+        }
+    }
+    private fun isInputValid(username: String, password: String): Boolean{
+      if(username.isEmpty()){
+          binding.registerUsername.error = "Please Enter Your Username"
+          return false
+      }
+        if (password.isEmpty()){
+            binding.registerPassword.error = "Please Enter Your Password"
+            return false
+        }
+        return true
     }
 }

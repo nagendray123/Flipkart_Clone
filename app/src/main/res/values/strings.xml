@@ -17,5 +17,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="new_user">new registration\n</string>
+    <string name="new_user">NEW USER? SIGN UP</string>
+    <string name="add_to_kart">Add to Cart</string>
+    <string name="title">Title</string>
+    <string name="product">Product</string>
 </resources>
